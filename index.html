@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Shop</title>
+    <link rel='stylesheet' href='css/style.css'>
+</head>
+
+<body onload="onInit()">
+    <!-- For Testing, enable this -->
+    <button onclick="resetLocalStorage()">Clear Storage</button>
+    <title>Welcome to your bookshop!</title>
+    <section class="main-container">
+        <section class="books-table">
+            <!-- Load bearing div -->
+            <div>
+                <table>
+                    <thead>
+                        <th>
+                            ID
+                        </th>
+                        <th class="clickable" onclick="onSortBy('title')">Title</th>
+                        <th class="clickable" onclick="onSortBy('price')">Price</th>
+                        <th class="actions">Actions</th>
+                    </thead>
+                    <tbody class="table-container"></tbody>
+                </table>
+            </div>
+        </section>
+        <button onclick="onCreateBook()">Create new book</button>
+        <section class="page-nav"></section>
+        <div class="modal">
+            <button class="close-modal" onclick="onClose()">Close</button>
+            <div class="new-book">
+                <input type="text" name="book-name" placeholder="Enter the book's name">
+                <input type="text" name="book-price" placeholder="Enter the book's price">
+                <button onclick="onAddBook()">Add Book</button>
+            </div>
+            <div class="update-book">
+                <input type="text" name="book-new-price" placeholder="Enter the book's new price">
+                <button onclick="onConfirmUpdate()">Confirm</button>
+            </div>
+            <div class="read-book">
+                <label class="title"></label>
+                <label>Author: <label class="author"></label></label>
+                <section class="rate-container">
+                    <button onclick="onChangeRate(-1)">-</button>
+                    <label class="rate"></label>
+                    <button onclick="onChangeRate(1)">+</button>
+                </section>
+                <div class="img"></div>
+                <label class="price"></label>
+                <label class="details"></label>
+            </div>
+            <div class="user-msg"></div>
+            <label class="not-allowed-msg">You're not allowed to do that!</label>
+        </div>
+    </section>
+    <script src="js/services/util.service.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/book.service.js"></script>
+    <script src="js/bookshop.controller.js"></script>
+</body>
+
+</html>

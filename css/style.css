@@ -1,0 +1,191 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #80A1C1;
+    color: #292725;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+title {
+    display: block;
+    font-weight: 600;
+    font-size: 2em;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+thead {
+    color: #EEE3AB;
+}
+
+th,
+td {
+    text-align: center;
+    border-bottom: black 1px solid;
+    border-left: black 1px solid;
+    /* max-height: 20px; */
+    /* line-height: 0px; */
+}
+
+th:last-child {
+    padding-right: 16px;
+}
+
+td:last-child,
+th:last-child {
+    border-right: black 1px solid;
+}
+
+button {
+    padding: 10px;
+    border-radius: 10px;
+    border: 0px;
+    margin: 5px;
+    color: #36332e;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75) inset;
+    transition: all 0.8s;
+}
+
+button:not([disabled]) {
+    cursor: pointer;
+    background-color: #EEE3AB;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+button:not([disabled]):hover {
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.75);
+    background-color: #c3bb91;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-msg,
+.new-book,
+.update-book,
+.read-book {
+    display: none;
+}
+
+.books-table {
+    display: flex;
+    justify-content: center;
+    width: 80vw;
+    height: 50vh;
+    background-color: #A77E58;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.75);
+}
+
+.id {
+    width: 10ch
+}
+
+.title {
+    width: 48ch;
+}
+
+.modal {
+    position: absolute;
+    top: 0;
+    left: 150%;
+    background-color: #A77E58;
+    padding: 65px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.75);
+    transition: left 0.5s;
+}
+
+.modal div {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+}
+
+.pages-nav {
+    display: flex;
+}
+
+.das-kapital,
+.the-conquest-of-bread,
+.the-ego-and-his-own,
+.the-struggle-against-the-state-and-other-essays {
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 200px;
+    width: 125px;
+}
+
+.das-kapital {
+    background-image: url(../assets/capital.jpg);
+}
+
+.the-conquest-of-bread {
+    background-image: url(../assets/conquest.jpg);
+}
+
+.the-ego-and-his-own {
+    background-image: url(../assets/ego.jpg);
+}
+
+.the-struggle-against-the-state-and-other-essays {
+    background-image: url(../assets/struggle.jpg);
+}
+
+.not-allowed-msg {
+    display: none;
+    color: red;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.open {
+    display: flex;
+}
+
+.modal.open:not(.delete) {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.delete {
+    left: 0;
+}
+
+@media screen and (max-width:890px) {
+    .id,
+    .title {
+        min-width: 0;
+    }
+}
