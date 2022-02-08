@@ -1,6 +1,9 @@
 'use strict'
 
+$(onInit)
+
 function onInit() {
+    _setEventListeners()
     renderBooks()
     _createPagesNav()
 }
@@ -76,7 +79,7 @@ function onConfirmUpdate() {
     _toggleModal()
 }
 
-function onClose() {
+function onCloseModal() {
     _toggleModal()
 }
 
@@ -85,7 +88,8 @@ function onChangeRate(diff) {
     _renderRate()
 }
 
-function onSortBy(sortBy) {
+function onSortBy(ev) {
+    var sortBy = ev.data
     setSortBy(sortBy)
     renderBooks()
 }
@@ -198,4 +202,12 @@ function _addBinaryBtnClasses(elBtn, direction) {
 function _disableCurrPageBtn() {
     const currPageIdx = getPages().currPageIdx
     document.querySelector('.page-nav').children.item(currPageIdx + 1).disabled = true
+}
+
+function _setEventListeners() {
+    $('#btn-clear-storage').click(resetLocalStorage)
+    $('#header-title').click('title', onSortBy)
+    $('#header-price').click('price', onSortBy)
+    $('#btn-create-book').click(onCreateBook)
+    $('.close-modal').click(onCloseModal)
 }

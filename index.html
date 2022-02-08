@@ -9,9 +9,9 @@
     <link rel='stylesheet' href='css/style.css'>
 </head>
 
-<body onload="onInit()">
+<body>
     <!-- For Testing, enable this -->
-    <button onclick="resetLocalStorage()">Clear Storage</button>
+    <button id="btn-clear-storage">Clear Storage</button>
     <title>Welcome to your bookshop!</title>
     <section class="main-container">
         <section class="books-table">
@@ -19,21 +19,19 @@
             <div>
                 <table>
                     <thead>
-                        <th>
-                            ID
-                        </th>
-                        <th class="clickable" onclick="onSortBy('title')">Title</th>
-                        <th class="clickable" onclick="onSortBy('price')">Price</th>
+                        <th>ID</th>
+                        <th id="header-title" class="clickable">Title</th>
+                        <th id="header-price" class="clickable">Price</th>
                         <th class="actions">Actions</th>
                     </thead>
                     <tbody class="table-container"></tbody>
                 </table>
             </div>
         </section>
-        <button onclick="onCreateBook()">Create new book</button>
+        <button id="btn-create-book">Create new book</button>
         <section class="page-nav"></section>
         <div class="modal">
-            <button class="close-modal" onclick="onClose()">Close</button>
+            <button class="close-modal">Close</button>
             <div class="new-book">
                 <input type="text" name="book-name" placeholder="Enter the book's name">
                 <input type="text" name="book-price" placeholder="Enter the book's price">
@@ -59,6 +57,7 @@
             <label class="not-allowed-msg">You're not allowed to do that!</label>
         </div>
     </section>
+    <script src="lib/jquery/jquery.js"></script>
     <script src="js/services/util.service.js"></script>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/book.service.js"></script>
