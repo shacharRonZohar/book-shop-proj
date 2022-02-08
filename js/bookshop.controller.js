@@ -5,6 +5,7 @@
 // It only sorts the last two in the array after the first sort by price
 // I'll also make a better design with bootstrap and make tons of refactors when I have time (weekend?)
 // I want to be fresh for the super important lesson tmrw and it's 22:00 rn
+
 $(onInit)
 
 function onInit() {
