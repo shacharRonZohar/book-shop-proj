@@ -35,8 +35,8 @@ function onCreateBook() {
 }
 
 function onAddBook() {
-    const bookName = document.querySelector(`input[name="book-name"]`).value.trim()
-    const bookPrice = document.querySelector(`input[name="book-price"]`).value.trim()
+    const bookName = $(`input[name="book-name"]`).val().trim()
+    const bookPrice = $(`input[name="book-price"]`).val().trim()
     if (!bookName || !bookPrice || isNaN(bookPrice)) return flickerClass('not-allowed-msg', 'open')
     addBook(bookName, bookPrice)
     renderBooks()
@@ -72,7 +72,7 @@ function onUpdateBook(bookId) {
 }
 
 function onConfirmUpdate() {
-    const bookPrice = document.querySelector(`input[name="book-new-price"]`).value
+    const bookPrice = $(`input[name="book-new-price"]`).val()
     if (!bookPrice || isNaN(bookPrice)) return flickerClass('not-allowed-msg', 'open')
     updateBook(getCurrBook(), bookPrice)
     renderBooks()
@@ -83,7 +83,8 @@ function onCloseModal() {
     _toggleModal()
 }
 
-function onChangeRate(diff) {
+function onChangeRate(ev) {
+    const diff = ev.data
     changeRate(diff)
     _renderRate()
 }
@@ -209,5 +210,9 @@ function _setEventListeners() {
     $('#header-title').click('title', onSortBy)
     $('#header-price').click('price', onSortBy)
     $('#btn-create-book').click(onCreateBook)
+    $('#btn-add-book').click(onAddBook)
+    $('#btn-confirm-update').click(onConfirmUpdate)
+    $('#btn-change-rate-minus').click(-1, onChangeRate)
+    $('#btn-change-rate-plus').click(1, onChangeRate)
     $('.close-modal').click(onCloseModal)
 }
