@@ -3,23 +3,49 @@
 $(onInit)
 
 function onInit() {
-    _setEventListeners()
+    setEventListeners()
     renderBooks()
     _createPagesNav()
 }
 
+function setEventListeners() {
+    // Static btns
+    $('#btn-clear-storage').click(resetLocalStorage)
+    $('#btn-create-book').click(onCreateBook)
+    $('#btn-add-book').click(onAddBook)
+    $('#btn-confirm-update').click(onConfirmUpdate)
+    $('#btn-change-rate-minus').click(-1, onChangeRate)
+    $('#btn-change-rate-plus').click(1, onChangeRate)
+    $('.close-modal').click(onCloseModal)
+
+    // Table headers (for sorting)
+    $('#header-title').click('title', onSortBy)
+    $('#header-price').click('price', onSortBy)
+}
+
 function renderBooks() {
+    // The keys for the table headers, corresponding to the object keys
     const valueOpts = ['id', 'title', 'price']
+
+    // Gets the books according to the current sorting 
     const books = getBooks()
+
+    // Reset the static table container
     const elTable = document.querySelector('.table-container')
     elTable.innerHTML = ''
+
     books.forEach(book => {
+        // Insert a tr element inside the table
         const elRow = elTable.insertRow()
-        valueOpts.forEach(opt => {
+
+        // Iterate over the table headers key per book
+        valueOpts.forEach((opt, optIdx) => {
             const elCell = elRow.insertCell()
             elCell.innerText = book[opt]
             elCell.classList.add(opt)
-            if (opt === 'price') {
+            if (optIdx === valueOpts.length - 1) {
+                // If the current iteration is the last in the array,
+                // insert another cell and add the actions html to it 
                 const elActionsCell = elRow.insertCell()
                 elActionsCell.innerHTML = _getActionsHtml(book)
                 elActionsCell.classList.add('actions')
@@ -203,16 +229,4 @@ function _addBinaryBtnClasses(elBtn, direction) {
 function _disableCurrPageBtn() {
     const currPageIdx = getPages().currPageIdx
     document.querySelector('.page-nav').children.item(currPageIdx + 1).disabled = true
-}
-
-function _setEventListeners() {
-    $('#btn-clear-storage').click(resetLocalStorage)
-    $('#header-title').click('title', onSortBy)
-    $('#header-price').click('price', onSortBy)
-    $('#btn-create-book').click(onCreateBook)
-    $('#btn-add-book').click(onAddBook)
-    $('#btn-confirm-update').click(onConfirmUpdate)
-    $('#btn-change-rate-minus').click(-1, onChangeRate)
-    $('#btn-change-rate-plus').click(1, onChangeRate)
-    $('.close-modal').click(onCloseModal)
 }
