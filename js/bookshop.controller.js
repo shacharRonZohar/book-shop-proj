@@ -140,15 +140,15 @@ function onGotoPage(elBtn, pageIdx) {
 function flashMsg(msg) {
     if (getModalState().modal) return
     _toggleModal()
-    document.querySelector('.close-modal').style.display = 'none'
-    const el = document.querySelector('.user-msg')
-    el.innerText = msg
-    el.classList.add('open')
+    $('.close-modal').hide()
+    const $elUserMsg = $('.user-msg')
+    $elUserMsg.text(msg)
+    $elUserMsg.addClass('open')
     document.querySelector('.modal').classList.add('delete')
     setTimeout(() => {
         _toggleModal()
         toggleModalIsDelete()
-        el.classList.remove('open')
+        $elUserMsg.classList.remove('open')
         document.querySelector('.close-modal').style.display = 'inline'
     }, 2000)
 }
