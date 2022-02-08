@@ -99,7 +99,8 @@ function _createBooks() {
             _createBook('Das Kapital', undefined, 'Karl Marx'),
             _createBook('The Conquest of Bread', undefined, 'Peter Kropotkin'),
             _createBook('The Ego and His Own', undefined, 'Max Stirner'),
-            _createBook('The Struggle Against the State and Other Essays', undefined, 'Nestor Makhno')
+            _createBook('The Struggle Against the State and Other Essays', undefined, 'Nestor Makhno'),
+            _createBook('Coraline', undefined, 'Neil Gaiman')
         ]
     }
     gBooks = books

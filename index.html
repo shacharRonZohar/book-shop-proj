@@ -11,54 +11,59 @@
 
 <body>
     <!-- For Testing, enable this -->
-    <button id="btn-clear-storage">Clear Storage</button>
-    <title>Welcome to your bookshop!</title>
+    <button id="btn-clear-storage" data-trans="btn-clear-storage">Clear Storage</button>
+    <title data-trans="title">Welcome to your bookshop!</title>
     <section class="main-container">
+        <select id="lang-select">
+            <option value="en" selected="selected">English</option>
+            <option value="he">עברית</option>
+        </select>
         <section class="books-table">
             <!-- Load bearing div -->
             <div>
                 <table>
                     <thead>
-                        <th>ID</th>
-                        <th id="header-title" class="clickable">Title</th>
-                        <th id="header-price" class="clickable">Price</th>
-                        <th class="actions">Actions</th>
+                        <th data-trans="tableh-id">ID</th>
+                        <th id="header-title" data-trans="tableh-title" class="clickable">Title</th>
+                        <th id="header-price" data-trans="tableh-price" class="clickable">Price</th>
+                        <th class="actions" data-trans="tableh-actions">Actions</th>
                     </thead>
                     <tbody class="table-container"></tbody>
                 </table>
             </div>
         </section>
-        <button id="btn-create-book">Create new book</button>
+        <button id="btn-create-book" data-trans="btn-create-book">Create new book</button>
         <section class="page-nav"></section>
-        <div class="modal">
-            <button class="close-modal">Close</button>
+        <div class="modal" hidden="true">
+            <button data-trans="btn-close" class="close-modal">Close</button>
             <div class="new-book">
-                <input type="text" name="book-name" placeholder="Enter the book's name">
-                <input type="text" name="book-price" placeholder="Enter the book's price">
-                <button id="btn-add-book">Add Book</button>
+                <input type="text" name="book-name" data-trans="input-book-name" placeholder="Enter the book's name">
+                <input type="text" name="book-price" data-trans="input-book-price" placeholder="Enter the book's price">
+                <button id="btn-add-book" data-trans="btn-add-book">Add Book</button>
             </div>
             <div class="update-book">
-                <input type="text" name="book-new-price" placeholder="Enter the book's new price">
-                <button id="btn-confirm-update">Confirm</button>
+                <input type="text" name="book-new-price" data-trans="input-book-price-up" placeholder="Enter the book's new price">
+                <button id="btn-confirm-update" data-trans="btn-confirm">Confirm</button>
             </div>
             <div class="read-book ">
-                <label class="title "></label>
-                <label>Author: <label class="author "></label></label>
+                <label class="modal-title"></label>
+                <label data-trans="author">Author: </label> <label class="modal-author"></label>
                 <section class="rate-container ">
                     <button id="btn-change-rate-minus">-</button>
-                    <label class="rate "></label>
+                    <label class="modal-rate "></label>
                     <button id="btn-change-rate-plus">+</button>
                 </section>
-                <div class="img "></div>
-                <label class="price "></label>
-                <label class="details "></label>
+                <div class="modal-img"></div>
+                <label class="modal-price"></label>
+                <label class="modal-details"></label>
             </div>
-            <div class="user-msg "></div>
-            <label class="not-allowed-msg ">You're not allowed to do that!</label>
+            <div class="user-msg" data-trans="user-msg"></div>
+            <label data-trans="not-allowed-msg" class="not-allowed-msg">You're not allowed to do that!</label>
         </div>
     </section>
     <script src="lib/jquery/jquery.js "></script>
     <script src="js/services/util.service.js "></script>
+    <script src="js/services/i18n.service.js "></script>
     <script src="js/services/storage.service.js "></script>
     <script src="js/services/book.service.js "></script>
     <script src="js/bookshop.controller.js "></script>

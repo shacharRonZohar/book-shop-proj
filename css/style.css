@@ -3,6 +3,10 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+body.rtl {
+    direction: rtl;
+}
+
 html,
 body {
     overflow: hidden;
@@ -46,13 +50,13 @@ td {
     /* line-height: 0px; */
 }
 
-th:last-child {
-    padding-right: 16px;
+th:not(:first-child),
+td:not(:first-child) {
+    border-left: black 1px solid;
 }
 
-td:last-child,
 th:last-child {
-    border-right: black 1px solid;
+    padding-right: 16px;
 }
 
 button {
@@ -139,10 +143,7 @@ button:not([disabled]):hover {
     display: flex;
 }
 
-.das-kapital,
-.the-conquest-of-bread,
-.the-ego-and-his-own,
-.the-struggle-against-the-state-and-other-essays {
+.modal-img {
     background-repeat: no-repeat;
     background-size: contain;
     height: 200px;
@@ -163,6 +164,10 @@ button:not([disabled]):hover {
 
 .the-struggle-against-the-state-and-other-essays {
     background-image: url(../assets/struggle.jpg);
+}
+
+.coraline {
+    background-image: url(../assets/coraline.jpg);
 }
 
 .not-allowed-msg {

@@ -21,6 +21,9 @@ function setEventListeners() {
     // Table headers (for sorting)
     $('#header-title').click('title', onSortBy)
     $('#header-price').click('price', onSortBy)
+
+    // Lang select
+    $('#lang-select').change(onSetLang)
 }
 
 function renderBooks() {
@@ -137,38 +140,55 @@ function onGotoPage(elBtn, pageIdx) {
     renderBooks()
 }
 
+function onSetLang() {
+    const lang = $(this).find('option:selected').val()
+    setLang(lang);
+    if (lang === 'he') $('body').addClass('rtl')
+    else $('body').removeClass('rtl')
+    doTrans();
+}
+
+function doTrans() {
+    const $els = $('[data-trans]')
+    $els.each(function() {
+        const transKey = this.dataset.trans
+        const txt = getTrans(transKey)
+        if (this.nodeName === 'INPUT') this.placeholder = txt
+        else this.innerText = txt
+    })
+}
+
 function flashMsg(msg) {
     if (getModalState().modal) return
     _toggleModal()
     $('.close-modal').hide()
     const $elUserMsg = $('.user-msg')
     $elUserMsg.text(msg)
-    $elUserMsg.addClass('open')
-    document.querySelector('.modal').classList.add('delete')
+    $elUserMsg.show()
+    $('.modal').addClass('delete')
     setTimeout(() => {
         _toggleModal()
         toggleModalIsDelete()
-        $elUserMsg.classList.remove('open')
-        document.querySelector('.close-modal').style.display = 'inline'
+        $elUserMsg.hide()
     }, 2000)
 }
 
 function _showBookDetails(book) {
     for (var key in book) {
         if (key === 'id') continue
-        const el = document.querySelector(`.${key}`)
+        const el = document.querySelector(`.modal-${key}`)
         if (key === 'img') {
             el.className = ''
-            el.classList.add(`img`)
-            el.classList.add(`${book[key]}`)
+            el.classList.add(`modal-img`)
+            el.classList.add(`${book.img}`)
         } else el.innerText = book[key]
     }
 }
 
 function _getActionsHtml(book) {
-    return `<button onclick="onReadBook('${book.id}')">Read</button>
-    <button onclick="onUpdateBook('${book.id}')">Update</button>
-    <button onclick="onDeleteBook('${book.id}')">Delete</button>`
+    return `<button data-trans="btn-read" onclick="onReadBook('${book.id}')">Read</button>
+    <button data-trans="btn-update" onclick="onUpdateBook('${book.id}')">Update</button>
+    <button data-trans="btn-delete" onclick="onDeleteBook('${book.id}')">Delete</button>`
 }
 
 function _toggleModal() {
@@ -179,7 +199,9 @@ function _toggleModal() {
 }
 
 function _resetModal() {
-    document.querySelectorAll('.modal>*').forEach(el => el.classList.remove('open'))
+    $('.modal>*:not(.close-modal)').each(function() {
+        $(this).hide()
+    })
 }
 
 function _renderRate() {
