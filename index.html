@@ -35,33 +35,33 @@
             <div class="new-book">
                 <input type="text" name="book-name" placeholder="Enter the book's name">
                 <input type="text" name="book-price" placeholder="Enter the book's price">
-                <button onclick="onAddBook()">Add Book</button>
+                <button id="btn-add-book">Add Book</button>
             </div>
             <div class="update-book">
                 <input type="text" name="book-new-price" placeholder="Enter the book's new price">
-                <button onclick="onConfirmUpdate()">Confirm</button>
+                <button id="btn-confirm-update" ">Confirm</button>
             </div>
-            <div class="read-book">
-                <label class="title"></label>
-                <label>Author: <label class="author"></label></label>
-                <section class="rate-container">
-                    <button onclick="onChangeRate(-1)">-</button>
-                    <label class="rate"></label>
-                    <button onclick="onChangeRate(1)">+</button>
+            <div class="read-book ">
+                <label class="title "></label>
+                <label>Author: <label class="author "></label></label>
+                <section class="rate-container ">
+                    <button onclick="onChangeRate(-1) ">-</button>
+                    <label class="rate "></label>
+                    <button onclick="onChangeRate(1) ">+</button>
                 </section>
-                <div class="img"></div>
-                <label class="price"></label>
-                <label class="details"></label>
+                <div class="img "></div>
+                <label class="price "></label>
+                <label class="details "></label>
             </div>
-            <div class="user-msg"></div>
-            <label class="not-allowed-msg">You're not allowed to do that!</label>
+            <div class="user-msg "></div>
+            <label class="not-allowed-msg ">You're not allowed to do that!</label>
         </div>
     </section>
-    <script src="lib/jquery/jquery.js"></script>
-    <script src="js/services/util.service.js"></script>
-    <script src="js/services/storage.service.js"></script>
-    <script src="js/services/book.service.js"></script>
-    <script src="js/bookshop.controller.js"></script>
+    <script src="lib/jquery/jquery.js "></script>
+    <script src="js/services/util.service.js "></script>
+    <script src="js/services/storage.service.js "></script>
+    <script src="js/services/book.service.js "></script>
+    <script src="js/bookshop.controller.js "></script>
 </body>
 
 </html>
