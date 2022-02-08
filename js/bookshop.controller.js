@@ -1,5 +1,10 @@
 'use strict'
 
+// Notes: I was almost done with migration to jQuery then shit started to break so I stopped and reverted some of the changes, not a priority rn
+// Sorting by price suddenly broke aswell, couldn't track the exact source at this point,
+// It only sorts the last two in the array after the first sort by price
+// I'll also make a better design with bootstrap and make tons of refactors when I have time (weekend?)
+// I want to be fresh for the super important lesson tmrw and it's 22:00 rn
 $(onInit)
 
 function onInit() {
@@ -120,6 +125,8 @@ function onChangeRate(ev) {
 
 function onSortBy(ev) {
     var sortBy = ev.data
+    console.log('sortBy', sortBy)
+
     setSortBy(sortBy)
     renderBooks()
 }
@@ -161,7 +168,7 @@ function doTrans() {
 function flashMsg(msg) {
     if (getModalState().modal) return
     _toggleModal()
-    $('.close-modal').hide()
+    toggleClass('close-modal', 'open')
     const $elUserMsg = $('.user-msg')
     $elUserMsg.text(msg)
     $elUserMsg.show()
@@ -199,9 +206,7 @@ function _toggleModal() {
 }
 
 function _resetModal() {
-    $('.modal>*:not(.close-modal)').each(function() {
-        $(this).hide()
-    })
+    document.querySelectorAll('.modal>*').forEach(el => el.classList.remove('open'))
 }
 
 function _renderRate() {
